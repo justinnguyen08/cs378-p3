@@ -1,8 +1,106 @@
-/* 
-  Style your elements by creating CSS classes here.
-  Below, you can see an example of a class called "menu" that changes the color of the text to blue. Modify according to your needs.
-*/
-
-.menu {
-  color: blue;
+body {
+  color: #000000;
+  font-family: 'Arial';
 }
+
+.descriptor {
+  text-align: center;
+  margin: 0 auto;
+  width: 80%
+}
+
+.decorative {
+  font-family: 'Times New Roman';
+  color: rgb(27, 130, 156);
+  margin: 5px 0;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.descriptor img{
+  width: 80px;
+  height: auto;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.descriptor h1 {
+  font-family: 'Verdana';
+  margin: 5px 0;
+}
+
+.food {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.food div {
+  text-align: left;
+}
+
+.food img {
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  justify-content: center;
+  margin-left: 20px;
+  flex-grow: 1;
+}
+
+.item-info h3{
+  color:#333;
+  font-weight: bold;
+}
+
+p {
+  color:#7e7e7e;
+}
+
+.item-info p {
+  margin: 10px 0;
+}
+
+.price {
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.button {
+  background-color: #d3d3d3; 
+  cursor: pointer;
+  padding: 5px 10px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  color: #000000;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); 
+}
+
+
+.button img {
+  width: 20px;
+  height: auto;
+}
+
+.item-image {
+  width: 100px;
+  height: 125px; 
+  object-fit: cover; 
+}
+
