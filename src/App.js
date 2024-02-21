@@ -1,6 +1,8 @@
 import './App.css';
 import MenuItem from './components/MenuItem';
 import Descriptor from "./components/Descriptor";
+import React, { useState } from 'react';
+import Cart from './components/Cart';
 
 import 'bootstrap/dist/css/bootstrap.min.css'; // This imports bootstrap css styles. You can use bootstrap or your own classes by using the className attribute in your elements.
 
@@ -81,18 +83,58 @@ const menuItems = [
 
 
 function App() {
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (item) => {
+    setCart([...cart, item]);
+  };
+
+  const removeFromCart = (id) => {
+    const index = cart.findIndex(item => item.id === id);
+    if (index !== -1) {
+      const newCart = [...cart];
+      newCart.splice(index, 1);
+      setCart(newCart);
+    }
+  };
+
+  const clearCart = () => {
+    setCart([]);
+  };
+
+  const getQuantity = (id) => {
+    return cart.filter(item => item.id === id).length;
+  };
+
+  const placeOrder = () => {
+    if (cart.length === 0) {
+      alert('No items in cart');
+    } else {
+      const uniqueItems = [...new Set(cart)];
+      const orderDetails = uniqueItems.map(item => `${getQuantity(item.id)} ${item.title}`).join('\n');
+      alert(`Order placed!\n${orderDetails}`);
+    }
+  };
+
   return (
     <div>
       <Descriptor />
       <div className="menu">
         {menuItems.map(item => (
           <MenuItem 
-          key = {item.id} 
-          title = {item.title} 
-          description = {item.description}
-          imageName = {item.imageName}
-          price = {item.price}/>
+            key={item.id} 
+            title={item.title} 
+            description={item.description}
+            imageName={item.imageName}
+            price={item.price}
+            addToCart={() => addToCart(item)}
+            removeFromCart={() => removeFromCart(item.id)}
+            quantity={getQuantity(item.id)}
+          />
         ))}
+      </div>
+      <div>
+        <Cart cart={cart} clearCart={clearCart} placeOrder={placeOrder} />
       </div>
     </div>
   );
